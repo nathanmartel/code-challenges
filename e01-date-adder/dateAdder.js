@@ -11,21 +11,24 @@ module.exports = (oldDate, diff) => {
   const convertDiffToMsec = (myDiff) => {
     const number = Number(myDiff.slice(0, myDiff.length - 1));
     const unit = myDiff.slice(myDiff.length - 1);
+
     let msec;
     switch (unit) {
-      case 's': msec = number * 1000
-      case 'm': msec = number * 1000 * 60
-      case 'h': msec = number * 1000 * 60 * 60
-      case 'd': msec = number * 1000 * 60 * 60 * 24
-      case 'w': msec = number * 1000 * 60 * 60 * 24 * 7
-      case 'M': msec = Math.round(number * 1000 * 60 * 60 * 24 * 7 * (13/3)) // 52wk/year = 4 1/3 wk/mo
-      case 'y': msec = Math.round(number * 1000 * 60 * 60 * 24 * 7 * (13/3) * 12) // 52wk/year = 4 1/3 wk/mo
+      case 's': msec = number * 1000; break;
+      case 'm': msec = number * 1000 * 60; break;
+      case 'h': msec = number * 1000 * 60 * 60; break;
+      case 'd': msec = number * 1000 * 60 * 60 * 24; break;
+      case 'w': msec = number * 1000 * 60 * 60 * 24 * 7; break;
+      case 'M': msec = Math.round(number * 1000 * 60 * 60 * 24 * 7 * (13/3)); break; // 52wk/year = 4 1/3 wk/mo = 13/3
+      case 'y': msec = Math.round(number * 1000 * 60 * 60 * 24 * 7 * (13/3) * 12); break;
     }
     return msec;
   }
 
   const oldDateInMSec = Date.parse(oldDate);
   const diffInMsec = convertDiffToMsec(diff);
+
+  console.log('diffInMsec = ', diffInMsec);
   const newDateInMsec = oldDateInMSec + diffInMsec;
 
   return new Date(newDateInMsec);
