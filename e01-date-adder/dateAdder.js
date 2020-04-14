@@ -1,12 +1,5 @@
 module.exports = (oldDate, diff) => {
-  // Have a helper function for every unit of time in Date that takes in and adds two of the same units (oldDate, diff date) and returns any remainder
-  // Check end of diff string for time unit
-  // Convert diff to Date format
-  // Call series of helper functions, passing result to the next-larger unit
-  // Increment that unit, passing the recarrying any remainder over the cutoff to the next largest unit
-  // Return string formed by chain of function calls.
-
-  // Alternate, maybe simpler approach: convert oldDate and diff into smallest unit (seconds), add, and divide by units working smallest to largest. But Would that integer be too large for JS?
+  // Convert oldDate and diff into smallest unit (seconds), add, and divide by units working smallest to largest.
 
   const convertDiffToMsec = (myDiff) => {
     const number = Number(myDiff.slice(0, myDiff.length - 1));
@@ -19,20 +12,17 @@ module.exports = (oldDate, diff) => {
       case 'h': msec = number * 1000 * 60 * 60; break;
       case 'd': msec = number * 1000 * 60 * 60 * 24; break;
       case 'w': msec = number * 1000 * 60 * 60 * 24 * 7; break;
-      case 'M': msec = Math.round(number * 1000 * 60 * 60 * 24 * 7 * (13/3)); break; // 52wk/year = 4 1/3 wk/mo = 13/3
-      case 'y': msec = Math.round(number * 1000 * 60 * 60 * 24 * 7 * (13/3) * 12); break;
+      case 'M': msec = Math.round(number * 1000 * 60 * 60 * 24 * 7 * (365.25 / 12 / 7)); break; // (365.25 days/year / months/year / weeks/month) 
+      case 'y': msec = Math.round(number * 1000 * 60 * 60 * 24 * 7 * (365.25 / 12 / 7) * 12); break;
     }
     return msec;
   }
 
   const oldDateInMSec = Date.parse(oldDate);
   const diffInMsec = convertDiffToMsec(diff);
-
-  console.log('diffInMsec = ', diffInMsec);
   const newDateInMsec = oldDateInMSec + diffInMsec;
 
   return new Date(newDateInMsec);
-
 }
 
 

@@ -37,5 +37,29 @@ describe('Check dates', () => {
     expect(actual).toEqual(expected);
   });
 
+  it('Should add 10 weeks', () => {
+    const date = new Date("04/13/2020");
+    const diff = '10w';
+    const expected = new Date("2020-06-22T07:00:00.000Z");
+    const actual = dateAdder(date, diff);
+    expect(actual).toEqual(expected);
+  });
+
+  it('Should add 10 months', () => {
+    const date = new Date("04/13/2020");
+    const diff = '10M';
+    const expected = new Date("2021-02-13T07:00:00.000Z");
+    const actual = dateAdder(date, diff);
+    expect(actual).toEqual(expected);
+  });
+
+  it('Should add 10 years', () => {
+    const date = new Date("04/13/2020");
+    const diff = '10y';
+    const expected = new Date("2030-04-13T07:00:00.000Z");
+    const actual = dateAdder(date, diff);
+    expect(actual).toEqual(expected);
+  });
+
 });
 
