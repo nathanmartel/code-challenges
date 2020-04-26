@@ -1,0 +1,30 @@
+{
+  "name": "code-challenges",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --runInBand",
+    "test:watch": "npm run test -- --watch",
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__not-tests__/"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanmartel/code-challenges.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanmartel/code-challenges/issues"
+  },
+  "homepage": "https://github.com/nathanmartel/code-challenges#readme",
+  "dependencies": {
+    "jest": "^25.4.0"
+  }
+}
