@@ -1,5 +1,5 @@
-const transactions = require('../transactions.js');
-const dailyRevenue = require('../dailyRevenue.js')
+const transactions = require('../e02-daily-revenue/transactions.js');
+const dailyRevenue = require('../e02-daily-revenue/dailyRevenue.js')
 
 describe('Check revenue', () => {
 

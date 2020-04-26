@@ -1,3 +1,5 @@
+const set = require('../e03-set/Set.js')
+
 describe('Check Set', () => {
 
   it('Should be true (outputs results)', () => {

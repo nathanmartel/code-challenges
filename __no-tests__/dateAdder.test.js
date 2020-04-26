@@ -1,4 +1,4 @@
-const dateAdder = require('../dateAdder.js')
+const dateAdder = require('../e01-date-adder/dateAdder.js')
 
 describe('Check dates', () => {
 
